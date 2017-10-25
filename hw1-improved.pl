@@ -25,12 +25,12 @@ simp(s(p(X)), Z)    :- simp(X, Z).  % Cancel s and p.
 simp(p(p(X)), p(Z)) :- simp(p(X), Z).   % Remove p.
 simp(s(s(X)), s(Z)) :- simp(s(X), Z).   % Remove s.
 simp(-X, Z)         :- minus(X, A), simp(A, Z).
-simp(X+Y, Z)        :- simp(X, A), simp(Y, B), add2(A, B, Z).
-simp(p(X+Y), p(Z))  :- simp(X, A), simp(Y, B), add2(A, B, Z).
-simp(s(X+Y), s(Z))  :- simp(X, A), simp(Y, B), add2(A, B, Z).
-simp(X-Y, Z)        :- simp(X, A), simp(Y, B), subtract(A, B, Z).
-simp(p(X-Y), p(Z))  :- simp(X, A), simp(Y, B), subtract(A, B, Z).
-simp(s(X-Y), s(Z))  :- simp(X, A), simp(Y, B), subtract(A, B, Z).
+simp(X+Y, Z)        :- add2(X, Y, Z).
+simp(p(X+Y), p(Z))  :- add2(X, Y, Z).
+simp(s(X+Y), s(Z))  :- add2(X, Y, Z).
+simp(X-Y, Z)        :- subtract(X, Y, Z).
+simp(p(X-Y), p(Z))  :- subtract(X, Y, Z).
+simp(s(X-Y), s(Z))  :- subtract(X, Y, Z).
 
 % Minus function. minus(X, Z) will return the inverse of X in Z.
 minus(X, Z) :- simp(X, A), minusHelper(A, Z).

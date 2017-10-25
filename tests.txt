@@ -1,0 +1,41 @@
+add2(s(0)+s(s(0)), s(s(0)), Z).
+Z = s(s(s(s(s(0))))).
+add2(0, s(0)+s(s(0)), Z).
+Z = s(s(s(0))).
+add2(s(s(0)), s(0)+s(s(0)), Z).
+Z = s(s(s(s(s(0))))).
+add2(s(0)+s(0), s(0+s(s(0))), Z).
+Z = s(s(s(s(s(0))))).
+
+add2(p(s(0)), s(s(0)), Z).
+Z = s(s(0)).
+add2(0, s(p(0)), Z).
+Z = 0.
+add2(p(0)+s(s(0)), s(s(0)), Z).
+Z = s(s(s(0))).
+add2(p(0), p(0)+s(p(0)), Z).
+Z = p(p(0)).
+minus(0, Z).
+Z = 0.
+
+minus(s(s(0)), Z).
+Z = p(p(0)).
+minus(s(p(0)), Z).
+Z = 0.
+minus(p(s(p(0))), Z).
+Z = s(0).
+
+add2(-p(s(0)), s(s(0)), Z).
+Z = s(s(0)).
+add2(p(0)+s(s(0)), -s(s(0)), Z).
+Z = p(0).
+
+subtract(p(s(0)), s(s(0)), Z).
+Z = p(p(0)).
+subtract(p(0), -s(s(0)), Z).
+Z = s(0).
+
+add2(-(s(0)-p(0)),s(0),X).
+X = p(0).
+subtract(p(0), p(s(0))-s(s(0)), Z).
+Z = s(0).

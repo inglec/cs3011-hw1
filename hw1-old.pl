@@ -15,8 +15,8 @@ add2(0, 0, 0). % Base case. Cannot use add(0, X, X) as s(0+s(0)) would unify wit
 add2(-X, Y, Z) :- minus(X, A), add2(A, Y, Z).
 add2(X, -Y, Z) :- minus(Y, A), add2(X, A, Z).
 
-add2(A+B, Y, Z) :- add2(A, B, X), add2(X, Y, Z). % n(_)+n(_) => n(n(_))
-add2(X, A+B, Z) :- add2(A, B, Y), add2(X, Y, Z). % n(_)+n(_) => n(n(_))
+add2(A+B, Y, Z) :-     add2(A, B, X), add2(X, Y, Z).
+add2(X, A+B, Z) :-     add2(A, B, Y), add2(X, Y, Z).
 add2(A-B, Y, Z) :- subtract(A, B, X), add2(X, Y, Z).
 add2(X, A-B, Z) :- subtract(A, B, Y), add2(X, Y, Z).
 
@@ -36,7 +36,7 @@ subtract(X, Y, Z) :- add2(X, -Y, Z).
 
 minus(0, 0). % 0 => 0
 minus(-X, X). % -X => X
-minus(A+B, Y) :- add(A, B, X), minus(X, Y).
+minus(A+B, Y) :-      add(A, B, X), minus(X, Y).
 minus(A-B, Y) :- subtract(A, B, X), minus(X, Y).
 minus(s(p(X)), Y) :- minus(X, Y). % s(p(X)) => X
 minus(p(s(X)), Y) :- minus(X, Y). % s(p(X)) => X

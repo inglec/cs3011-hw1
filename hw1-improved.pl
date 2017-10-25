@@ -6,8 +6,8 @@ numeral(X+Y)  :- numeral(X), numeral(Y).
 numeral(X-Y)  :- numeral(X), numeral(Y).
 
 add(0, X, X).
-add(s(X), Y, s(Z)) :- add(X, Y, A), simp(A, Z).
-add(p(X), Y, p(Z)) :- add(X, Y, A), simp(A, Z).
+add(s(X), Y, s(Z)) :- add(X, Y, Z).
+add(p(X), Y, p(Z)) :- add(X, Y, Z).
 
 add2(X, Y, Z) :- simp(X, A), simp(Y, B), add(A, B, C), simp(C, Z).
 
@@ -21,12 +21,12 @@ simp(s(p(X)), Z)    :- simp(X, Z).
 simp(p(p(X)), p(Z)) :- simp(p(X), Z).
 simp(s(s(X)), s(Z)) :- simp(s(X), Z).
 simp(-X, Z)         :- minus(X, A), simp(A, Z).
-simp(X+Y, Z)        :- simp(X, A), simp(Y, B), add2(A, B, C), simp(C, Z).
-simp(p(X+Y), p(Z))  :- simp(X, A), simp(Y, B), add2(A, B, C), simp(C, Z).
-simp(s(X+Y), s(Z))  :- simp(X, A), simp(Y, B), add2(A, B, C), simp(C, Z).
-simp(X-Y, Z)        :- simp(X, A), simp(Y, B), subtract(A, B, C), simp(C, Z).
-simp(p(X-Y), p(Z))  :- simp(X, A), simp(Y, B), subtract(A, B, C), simp(C, Z).
-simp(s(X-Y), s(Z))  :- simp(X, A), simp(Y, B), subtract(A, B, C), simp(C, Z).
+simp(X+Y, Z)        :- simp(X, A), simp(Y, B), add2(A, B, Z).
+simp(p(X+Y), p(Z))  :- simp(X, A), simp(Y, B), add2(A, B, Z).
+simp(s(X+Y), s(Z))  :- simp(X, A), simp(Y, B), add2(A, B, Z).
+simp(X-Y, Z)        :- simp(X, A), simp(Y, B), subtract(A, B, Z).
+simp(p(X-Y), p(Z))  :- simp(X, A), simp(Y, B), subtract(A, B, Z).
+simp(s(X-Y), s(Z))  :- simp(X, A), simp(Y, B), subtract(A, B, Z).
 
 minus(X, Y) :- simp(X, A), minusHelper(A, Y).
 minusHelper(0, 0).
